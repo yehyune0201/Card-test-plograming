@@ -15,12 +15,14 @@ public class Card : MonoBehaviour
     public int number;
     public bool isMatched = false;
     public CardGame cardGame;
+    private SpriteRenderer CardBack;
 
+    public Object CardBack_obj;
     public List<Card> cards = new List <Card>();
 
     void Start()
     {
-        
+        CardBack = CardBack_obj.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -28,14 +30,19 @@ public class Card : MonoBehaviour
     {
         float currentY = transform.eulerAngles.y;
         
+
         if(isFront)
         {
           transform.rotation = Quaternion.Slerp(transform.rotation, originRotation, rotateY * Time.deltaTime);
+            CardBack.enabled = false;
         }
         else
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, flipRotation, rotateY * Time.deltaTime);
+            CardBack.enabled = true;
         }
+        
+        
        
     }
     public void ClickCard()
@@ -59,7 +66,7 @@ public class Card : MonoBehaviour
     {
         text = GetComponentInChildren<TextMeshProUGUI>();
         number = newNumber;
-        text.text = newNumber.ToString();
+        
     }
     public void ChangeColor(Color newColor)
     {

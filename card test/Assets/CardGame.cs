@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class CardGame : MonoBehaviour
 {
@@ -9,13 +10,16 @@ public class CardGame : MonoBehaviour
     private Card firstCard = null;
     private Card secoundCard = null;
     private bool isChecking = false;
+
     
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         StartGame();
     }
+    
+
     void StartGame()
     {
         List<int> pairNumbers = GenerratePairNumbers(cards.Count);  
@@ -38,8 +42,8 @@ public class CardGame : MonoBehaviour
         if(firstCard.number == secoundCard.number)
         {
             
-            firstCard.ChangeColor(Color.red);
-            secoundCard.ChangeColor(Color.red);
+            firstCard.ChangeColor(Color.blue);
+            secoundCard.ChangeColor(Color.blue);
 
             firstCard.isMatched = true;
             secoundCard.isMatched = true;
