@@ -8,20 +8,19 @@ public class CardGame : MonoBehaviour
     public List<Card> cards = new List <Card>();
     public List<Sprite> sprite = new List <Sprite>();
     private Card firstCard = null;
-    private Card secoundCard = null;
+    private Card secondCard = null;
     private bool isChecking = false;
 
-    
 
 
-    void Start()
+
+
+
+
+    public void StartGame()
     {
-        StartGame();
-    }
-    
+        
 
-    void StartGame()
-    {
         List<int> pairNumbers = GenerratePairNumbers(cards.Count);  
 
         for(int i = 0; i < pairNumbers.Count; ++i)
@@ -34,22 +33,24 @@ public class CardGame : MonoBehaviour
         {
             cards[i].isFront = false;
         }
+       
+
     }
     void CheakCard()
     {
         isChecking = true;
 
-        if(firstCard.number == secoundCard.number)
+        if(firstCard.number == secondCard.number)
         {
             
             firstCard.ChangeColor(Color.blue);
-            secoundCard.ChangeColor(Color.blue);
+            secondCard.ChangeColor(Color.blue);
 
             firstCard.isMatched = true;
-            secoundCard.isMatched = true;
+            secondCard.isMatched = true;
 
             firstCard = null;
-            secoundCard = null;
+            secondCard = null;
             
             isChecking = false;
 
@@ -61,41 +62,46 @@ public class CardGame : MonoBehaviour
         }
 
     }
-    
 
     public void onClickCard(Card card)
     {
-        if(isChecking)
+        if (isChecking)
         {
             return;
         }
 
-        if(firstCard == null)
+        if (card == firstCard)
+        {
+            return;
+        }
+
+        if (firstCard == null)
         {
             firstCard = card;
             firstCard.Flip(true);
         }
         else
         {
-            secoundCard = card;
-            secoundCard.Flip(true);
+            secondCard = card;
+            secondCard.Flip(true);
         }
-        if(firstCard != null && secoundCard != null)
+
+        if (firstCard != null && secondCard != null)
         {
             CheakCard();
         }
-
     }
+   
     void HideCard()
     {
         firstCard.isFront = false;
-        secoundCard.isFront = false;
+        secondCard.isFront = false;
 
         firstCard.Flip(false);
-        secoundCard.Flip(false);
+        secondCard.Flip(false);
 
         firstCard = null;
-        secoundCard = null;
+        secondCard = null;
 
         isChecking = false;
 
@@ -103,22 +109,32 @@ public class CardGame : MonoBehaviour
     // 랜덤
     List<int> GenerratePairNumbers(int cardCount)
     {
-        int pairCount = cardCount / 2;
-        List<int> newCardNumbers = new List <int>();
+        if (cardCount % 2 != 0)
+        {
+            Debug.LogError("카드 개수는 짝수여야 합니다!");
+            return null;
+        }
 
-        for(int i = 0; i < pairCount; ++i)
+        int pairCount = cardCount / 2;
+
+        List<int> newCardNumbers = new List<int>();
+
+        for (int i = 0; i < pairCount; ++i)
         {
             newCardNumbers.Add(i);
             newCardNumbers.Add(i);
         }
-        for(int i = newCardNumbers.Count - 1; i > 0; i--)
+
+        for (int i = newCardNumbers.Count - 1; i > 0; i--)
         {
             int rnd = Random.Range(0, i + 1);
+
             int temp = newCardNumbers[i];
 
             newCardNumbers[i] = newCardNumbers[rnd];
             newCardNumbers[rnd] = temp;
         }
+
         return newCardNumbers;
     }
 }

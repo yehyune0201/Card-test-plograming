@@ -15,14 +15,17 @@ public class Card : MonoBehaviour
     public int number;
     public bool isMatched = false;
     public CardGame cardGame;
-    private SpriteRenderer CardBack;
+   
+    public float flipSpeed = 5f;
+    public GameObject cardBack;
+    public Image frontImage;
 
-    public Object CardBack_obj;
+
     public List<Card> cards = new List <Card>();
 
     void Start()
     {
-        CardBack = CardBack_obj.GetComponent<SpriteRenderer>();
+        
     }
 
     // Update is called once per frame
@@ -33,13 +36,13 @@ public class Card : MonoBehaviour
 
         if(isFront)
         {
-          transform.rotation = Quaternion.Slerp(transform.rotation, originRotation, rotateY * Time.deltaTime);
-            CardBack.enabled = false;
+            transform.rotation = Quaternion.Slerp(transform.rotation, originRotation, rotateY * Time.deltaTime);
+            cardBack.SetActive(false);
         }
         else
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, flipRotation, rotateY * Time.deltaTime);
-            CardBack.enabled = true;
+            cardBack.SetActive(true);
         }
         
         
@@ -70,10 +73,13 @@ public class Card : MonoBehaviour
     }
     public void ChangeColor(Color newColor)
     {
-        GetComponent<Image>().color = newColor;
+        frontImage.color = newColor;
     }
+
     public void SetImage(Sprite sprite)
     {
-        GetComponent<Image>().sprite = sprite;
+        Debug.Log(sprite.name);
+
+        frontImage.sprite = sprite;
     }
 }
