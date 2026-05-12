@@ -19,7 +19,7 @@ public class CardGame : MonoBehaviour
 
     public void StartGame()
     {
-        
+        SoundManager.Instance.PlayBGM();
 
         List<int> pairNumbers = GenerratePairNumbers(cards.Count);  
 
@@ -79,11 +79,13 @@ public class CardGame : MonoBehaviour
         {
             firstCard = card;
             firstCard.Flip(true);
+            SoundManager.Instance.PlaySoundFx(); //
         }
         else
         {
             secondCard = card;
             secondCard.Flip(true);
+            SoundManager.Instance.PlaySoundFx(); //
         }
 
         if (firstCard != null && secondCard != null)

@@ -119,6 +119,52 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &28407676
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 28407678}
+  - component: {fileID: 28407677}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &28407677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28407676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 706c8eaf92d968c4bb472513b47a56fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipBGM: {fileID: 8300000, guid: aabafa75d3b70fe4283c38cf843f34dc, type: 3}
+  clipFx: {fileID: 8300000, guid: 5e023c6c96502d1449153dedbc6fbd7e, type: 3}
+--- !u!4 &28407678
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28407676}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.3487461, y: -13.074905, z: 0.01040585}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,7 +442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardPrefab: {fileID: 1799576052542183526, guid: 8a9000ee86eeabe4e8caabf31040b5eb, type: 3}
-  cardCount: 6
+  cardCount: 22
   spacing: 2
   cardGame: {fileID: 506264228}
 --- !u!1 &410087039
@@ -561,6 +607,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f8414b0b4e8b44e4abc1cf6b6dd63de5, type: 3}
   - {fileID: 21300000, guid: f83748c70581d714094ca6803722a4d9, type: 3}
   - {fileID: 21300000, guid: 0729da0f6fe92f74b9dea98cc56e094d, type: 3}
+  - {fileID: 21300000, guid: c3419b82bf71e3743ac0b161038d68f0, type: 3}
 --- !u!224 &506264229
 RectTransform:
   m_ObjectHideFlags: 0
@@ -718,3 +765,4 @@ SceneRoots:
   - {fileID: 357833736}
   - {fileID: 1366003252}
   - {fileID: 506264229}
+  - {fileID: 28407678}
