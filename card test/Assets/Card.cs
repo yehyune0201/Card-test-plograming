@@ -78,8 +78,7 @@ public class Card : MonoBehaviour
 
     public void SetImage(Sprite sprite)
     {
-        Debug.Log(sprite.name);
-
+        
         frontImage.sprite = sprite;
     }
 }
