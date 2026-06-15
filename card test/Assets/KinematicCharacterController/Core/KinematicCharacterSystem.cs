@@ -24,6 +24,7 @@ namespace KinematicCharacterController
         /// <summary>
         /// Creates a KinematicCharacterSystem instance if there isn't already one
         /// </summary>
+        /// 
         public static void EnsureCreation()
         {
             if (_instance == null)
@@ -277,7 +278,7 @@ namespace KinematicCharacterController
             for (int i = 0; i < PhysicsMovers.Count; i++)
             {
                 PhysicsMover mover = PhysicsMovers[i];
-                
+
                 mover.Transform.SetPositionAndRotation(
                     Vector3.Lerp(mover.InitialTickPosition, mover.TransientPosition, interpolationFactor),
                     Quaternion.Slerp(mover.InitialTickRotation, mover.TransientRotation, interpolationFactor));

@@ -35,10 +35,14 @@ namespace KinematicCharacterController.Walkthrough.FramePerfectRotation
         private Vector3 _moveInputVector;
         private Vector3 _lookInputVector;
 
+        private Vector3 _startPosition;
+        private Quaternion _startRotation;
         private void Start()
         {
-            // Assign to motor
             Motor.CharacterController = this;
+
+            _startPosition = Motor.TransientPosition;
+            _startRotation = Motor.TransientRotation;
         }
 
         /// <summary>
@@ -166,6 +170,10 @@ namespace KinematicCharacterController.Walkthrough.FramePerfectRotation
 
         public void OnMovementHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
         {
+            if (hitCollider.CompareTag("DeadZone"))
+            {
+                Motor.SetPositionAndRotation(_startPosition, _startRotation);
+            }
         }
 
         public void PostGroundingUpdate(float deltaTime)
